@@ -1,5 +1,5 @@
 import {Controller} from "react-hook-form";
-import {FormControl, FormErrorMessage, FormLabel, Input as ChakraInput} from "@chakra-ui/react";
+import {FormControl, FormErrorMessage, FormLabel, Input as ChakraInput, InputProps} from "@chakra-ui/react";
 
 
 export default function InputControl(props: InputControlProps) {
@@ -11,6 +11,7 @@ export default function InputControl(props: InputControlProps) {
     isEmail,
     isRequired,
     disabled,
+    ...inputProps
   } = props;
 
   const rules = {
@@ -22,14 +23,14 @@ export default function InputControl(props: InputControlProps) {
     <Controller rules={rules} disabled={disabled} name={name} render={({field, fieldState: {error}}) => (
       <FormControl isInvalid={!!error}>
         <FormLabel>{label}</FormLabel>
-        <ChakraInput {...field} placeholder={placeholder} type={type}/>
+        <ChakraInput {...field} {...inputProps} placeholder={placeholder} type={type}/>
         {error && <FormErrorMessage>{error.message}</FormErrorMessage>}
       </FormControl>
     )}/>
   );
 }
 
-export interface InputControlProps {
+export interface InputControlProps extends InputProps {
   name: string;
   label: string;
   isEmail?: boolean;

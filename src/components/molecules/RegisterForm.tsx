@@ -13,9 +13,10 @@ export default function RegisterForm({onSubmit, mode}: RegisterFormProps) {
   return (
     <Box as="form" onReset={() => reset()} onSubmit={handleSubmit(onSubmit)}>
       <Flex my="2rem" direction="column" flexWrap="wrap" gap="1.2rem">
-        <InputControl isRequired name="firstName" label="Nome" placeholder="Mario"/>
-        <InputControl isRequired name="lastName" label="Cognome" placeholder="Rossi"/>
-        <InputControl isRequired isEmail type="email" name="email" label="Email" placeholder="mario.rossi@gmail.com"/>
+        <InputControl data-cy="first-name" isRequired name="firstName" label="Nome" placeholder="Mario"/>
+        <InputControl data-cy="last-name" isRequired name="lastName" label="Cognome" placeholder="Rossi"/>
+        <InputControl data-cy="email" isRequired isEmail type="email" name="email" label="Email"
+                      placeholder="mario.rossi@gmail.com"/>
       </Flex>
 
       <Flex gap="1rem" alignItems="center">
